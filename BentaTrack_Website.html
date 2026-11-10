@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BentaTrack: download for Android</title>
+<meta name="description" content="Download BentaTrack, the app that helps sari-sari store owners record sales, track stock, and see profit.">
+<link rel="icon" href="benta_track_logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1E3A5F;
+    --navy-deep: #14283F;
+    --sign: #F6C21C;
+    --red: #D62839;
+    --paper: #F2F5F9;
+    --card: #FFFFFF;
+    --ink: #17212E;
+    --muted: #55657A;
+    --line: #D9E0EA;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  h1, h2 {
+    font-family: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    margin: 0;
+    line-height: 1.05;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 20px 18px 56px; }
+
+  /* The sign board: the one bold element on the page */
+  .sign {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 0 0 4px var(--navy-deep);
+  }
+  .sign-inner {
+    border: 4px solid var(--sign);
+    border-radius: 8px;
+    padding: 34px 22px 30px;
+    text-align: center;
+  }
+  .logo {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    border: 4px solid var(--sign);
+    background: var(--navy-deep);
+    object-fit: cover;
+  }
+  .sign h1 {
+    color: var(--sign);
+    font-weight: 800;
+    font-size: clamp(46px, 14vw, 84px);
+    letter-spacing: -0.03em;
+  }
+  .sign p {
+    margin: 14px auto 0;
+    color: #E8EEF6;
+    font-size: 19px;
+    max-width: 24ch;
+  }
+  .sign-posts {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 38px;
+  }
+  .sign-posts span {
+    width: 10px; height: 22px;
+    background: var(--navy-deep);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .download { margin-top: 28px; text-align: center; }
+  .btn {
+    display: block;
+    background: var(--sign);
+    color: var(--navy-deep);
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    padding: 20px 24px;
+    border-radius: 14px;
+    box-shadow: 0 5px 0 var(--navy-deep);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  .btn:hover { filter: brightness(1.04); }
+  .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--navy-deep); }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+  .meta { margin: 14px 0 0; color: var(--muted); font-size: 15px; }
+
+  .notice {
+    display: none;
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: #FFF3F4;
+    border-left: 5px solid var(--red);
+    border-radius: 6px;
+    text-align: left;
+    font-size: 15px;
+  }
+  .notice.show { display: block; }
+
+  section { margin-top: 44px; }
+  h2 { font-size: 30px; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+  section > p { color: var(--muted); margin: 8px 0 0; }
+
+  ol.steps { list-style: none; margin: 18px 0 0; padding: 0; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px 14px 62px;
+    margin-bottom: 10px;
+  }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px; top: 12px;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--sign);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    display: grid; place-items: center;
+  }
+  ol.steps b { display: block; font-weight: 600; }
+  ol.steps span { color: var(--muted); font-size: 15.5px; }
+
+  ul.features { list-style: none; margin: 18px 0 0; padding: 0; }
+  ul.features li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  ul.features li:first-child { border-top: 1px solid var(--line); }
+  ul.features b { font-weight: 600; color: var(--navy); }
+  ul.features span { display: block; color: var(--muted); font-size: 15.5px; }
+
+  .help {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 6px 16px;
+    margin-top: 18px;
+  }
+  details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+  details:last-child { border-bottom: 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; color: var(--muted); font-size: 15.5px; }
+
+  footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 14.5px; }
+
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="sign">
+    <div class="sign-inner">
+      <img class="logo" src="benta_track_logo.png" alt="BentaTrack owl logo" width="112" height="112">
+      <h1>BentaTrack</h1>
+      <p>Run your sari-sari store from your phone.</p>
+    </div>
+  </div>
+  <div class="sign-posts" aria-hidden="true"><span></span><span></span></div>
+
+  <div class="download">
+    <!--
+      The APK file must sit in the same folder as this page.
+      If you host the APK on GitHub Releases instead, replace BentaTrack.apk
+      below with the full link to the file.
+    -->
+    <a class="btn" id="dl" href="BentaTrack.apk" download>Download for Android</a>
+    <p class="meta">Version 1.0.1 &middot; 67 MB &middot; Free</p>
+    <div class="notice" id="notice"></div>
+  </div>
+
+  <section>
+    <h2>How to install</h2>
+    <p>It takes about a minute. Do this on your Android phone.</p>
+    <ol class="steps">
+      <li><b>Tap Download for Android</b><span>Wait for the file to finish downloading.</span></li>
+      <li><b>Open the file</b><span>Tap the notification, or find BentaTrack.apk in your Downloads or Files app.</span></li>
+      <li><b>Allow the install if your phone asks</b><span>Android may say your browser can’t install apps. Tap Settings, turn on Allow from this source, then go back.</span></li>
+      <li><b>Tap Install, then Open</b><span>Sign up with your email or phone number and set up your store.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>What you can do</h2>
+    <ul class="features">
+      <li><b>Record sales at the counter</b><span>Search or scan an item, add it to the cart, and confirm the sale.</span></li>
+      <li><b>Keep track of your stock</b><span>Add products, set prices, and see what needs restocking.</span></li>
+      <li><b>See what earns the most</b><span>View your best sellers, slow movers, and profit by day, week, or month.</span></li>
+      <li><b>Ask the AI assistant</b><span>Get answers about your store in Tagalog or English.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Having trouble?</h2>
+    <div class="help">
+      <details>
+        <summary>My phone says the app is blocked or unsafe</summary>
+        <p>BentaTrack isn’t on the Play Store yet, so Google Play Protect may show a warning. Tap More details, then Install anyway.</p>
+      </details>
+      <details>
+        <summary>The install says “App not installed”</summary>
+        <p>If you have an older copy of BentaTrack, uninstall it first and install this one again. Also check that your phone has at least 200 MB of free space.</p>
+      </details>
+      <details>
+        <summary>I can’t find the downloaded file</summary>
+        <p>Open your phone’s Files or My Files app and look in the Downloads folder for BentaTrack.apk.</p>
+      </details>
+      <details>
+        <summary>Does it work on iPhone?</summary>
+        <p>Not yet. BentaTrack is for Android phones only.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <p>Still stuck? Message the person who sent you this link.</p>
+  </footer>
+
+</main>
+
+<script>
+  // Tell people when they open the page on a device that can't install the app.
+  (function () {
+    var ua = navigator.userAgent || "";
+    var box = document.getElementById("notice");
+    var msg = "";
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      msg = "BentaTrack is only available for Android phones. It can’t be installed on iPhone or iPad.";
+    } else if (!/Android/i.test(ua)) {
+      msg = "Open this page on your Android phone to install the app. You can also download the file here and send it to your phone.";
+    }
+    if (msg) { box.textContent = msg; box.classList.add("show"); }
+  })();
+</script>
+</body>
+</html>
