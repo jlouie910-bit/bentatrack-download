@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BentaTrack: download for Android</title>
 <meta name="description" content="Download BentaTrack, the app that helps sari-sari store owners record sales, track stock, and see profit.">
+<link rel="icon" href="benta_track_logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
@@ -49,6 +50,16 @@
     border-radius: 8px;
     padding: 34px 22px 30px;
     text-align: center;
+  }
+  .logo {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    border: 4px solid var(--sign);
+    background: var(--navy-deep);
+    object-fit: cover;
   }
   .sign h1 {
     color: var(--sign);
@@ -165,6 +176,7 @@
 
   <div class="sign">
     <div class="sign-inner">
+      <img class="logo" src="benta_track_logo.png" alt="BentaTrack owl logo" width="112" height="112">
       <h1>BentaTrack</h1>
       <p>Run your sari-sari store from your phone.</p>
     </div>
